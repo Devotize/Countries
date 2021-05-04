@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<DialogPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.dialog.DialogView">
+   <content>
+      <GridPane hgap="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFF;" vgap="8.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" prefWidth="167.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="550.0" minWidth="10.0" prefWidth="433.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="92.0" minHeight="0.0" prefHeight="45.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="200.0" minHeight="0.0" prefHeight="37.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="277.0" minHeight="10.0" prefHeight="112.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="214.0" minHeight="10.0" prefHeight="118.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="214.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER" prefHeight="103.0" prefWidth="184.0" text="English name">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="english_name_text_area" prefHeight="0.0" prefWidth="419.0" promptText="Country Name" GridPane.columnIndex="1" GridPane.valignment="TOP" />
+            <TextArea fx:id="russian_name_text_area" prefHeight="200.0" prefWidth="200.0" promptText="Название страны" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ScrollPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <content>
+                  <TextArea fx:id="english_description_text_area" prefHeight="108.0" prefWidth="433.0" />
+               </content>
+            </ScrollPane>
+            <ScrollPane GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <content>
+                  <TextArea fx:id="russian_description_text_area" prefHeight="116.0" prefWidth="433.0" />
+               </content>
+            </ScrollPane>
+            <Label alignment="CENTER" prefHeight="50.0" prefWidth="172.0" text="Russian name" GridPane.rowIndex="1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_CENTER" prefHeight="151.0" prefWidth="196.0" text="English Description" GridPane.rowIndex="2">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_CENTER" prefHeight="189.0" prefWidth="188.0" text="Russian Description" GridPane.rowIndex="3">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="69.0" prefWidth="164.0" text="Flag" GridPane.rowIndex="4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <children>
+                  <Button fx:id="find_flag_button" layoutX="21.0" layoutY="19.0" mnemonicParsing="false" onMouseClicked="#chooseFileClick" text="..." />
+                  <Label fx:id="path_to_flag" layoutX="67.0" layoutY="23.0" text=".../folder/flag.png">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
+   </content>
+   <buttonTypes>
+      <ButtonType fx:constant="OK" />
+   </buttonTypes>
+</DialogPane>
