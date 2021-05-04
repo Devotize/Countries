@@ -11,9 +11,9 @@ import java.util.logging.Logger;
 public class Util {
     public final static Logger logger = Logger.getLogger("Default Logger");
 
-    public final static String COUNTRY_LIST_FILE_NAME = "country_list.txt";
+    public final static String COUNTRY_LIST_FILE_NAME = "resources/txt/country_list.txt";
 
-    public final static String COUNTRY_IMAGE_FILE_NAME = "country_image.txt";
+    public static boolean isEnglishLanguage = true;
 
     public static Image scale(Image source, int targetWidth, int targetHeight, boolean preserveRatio) {
         ImageView imageView = new ImageView(source);

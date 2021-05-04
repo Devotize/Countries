@@ -1,0 +1,8 @@
+Kyrgyzstan,Кыргызстан,Some Description Here,Какое-то описание
+Russia,Россия,Some Description Here,Какое-то описание
+Ukraine,Украина,Some Description Here,Какое-то описание
+USA,США,Some Description Here,Какое-то описание
+Kazakhstan,Казахстан,Some Description Here,Какое-то описание
+Germany,Германия,Some Description Here,Какое-то описание
+Honduras,Гондурас,Some Description Here,Какое-то описание
+Niger,Нигер,Some description,Какое-то описание

@@ -4,12 +4,14 @@ import domain.Country;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
+import ui.Main;
 import utils.Util;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -21,6 +23,7 @@ public class MainViewModel {
 
     public MainViewModel() {
         readCountryFile();
+        if (countries.isEmpty()) return;
         selectedCountry = countries.get(0);
     }
 
@@ -42,12 +45,11 @@ public class MainViewModel {
     }
 
     public void writeImageToFile(Country country, Image image) {
-        String str = country.getNameEng() + "," + Util.byteArrayToString(Util.imageToByteArray(image)) + "\n";
         try {
-            FileWriter writer = new FileWriter(Util.COUNTRY_IMAGE_FILE_NAME, true);
-            writer.write(str);
-            writer.close();
-        }catch (IOException e){
+            File file = new File("resources/pictures/" + country.getNameEng() + ".jpg");
+//            BufferedImage awtImage = new BufferedImage((int)image.getWidth(), (int)image.getHeight(), BufferedImage.TYPE_4BYTE_ABGR);
+            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "jpg", file);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -105,21 +107,18 @@ public class MainViewModel {
     }
 
     public Image getImageForCountry(Country country) {
-        try {
-            Scanner fileReader = new Scanner(new File(Util.COUNTRY_IMAGE_FILE_NAME));
-            while (fileReader.hasNextLine()) {
-                String str = fileReader.nextLine();
-                String[] stringArray = str.split(",");
-                if (country.getNameEng().equals(stringArray[0])) {
-                    String imageString = stringArray[1];
-                    byte[] buffer = Util.stringToByteArray(imageString);
-                    return Util.byteArrayToImage(buffer);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        File f = new File("resources/pictures/" + country.getNameEng() + ".jpg");
+        if (f.exists() && !f.isDirectory()){
+            return new Image(f.toURI().toString());
         }
         return null;
+    }
+
+    public void deleteImageForCountry(Country country) {
+        File f = new File("resources/pictures/" + country.getNameEng() + ".jpg");
+        if (f.exists() && !f.isDirectory()) {
+            f.delete();
+        }
     }
 
     public ObservableList<Country> getCountries() {
